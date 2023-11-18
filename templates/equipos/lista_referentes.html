@@ -9,12 +9,18 @@
     <a href="{% url 'lista_referentes' %}">Ver todos</a>
     <a href="{% url 'cargar_referentes' %}">Crear Referente</a>
     <br><br>
-    <ul>
+    <table class="table">
+        <tbody>
+            <tr>
+            <th>Nombre</th>
+            <th>Interno</th>
+            </tr>
         {% for referente in referentes %}
-        <li>
+        <tr>
             <td>{{referente.nombre}}</td>
             <td>{{referente.interno}}</td>
-        </li>
+        </tr>
         {% endfor %}
-    </ul>
+        </tbody>    
+    </table>
 {% endblock contenido %}

@@ -9,12 +9,18 @@
     <a href="{% url 'lista_proveedores' %}">Ver todos</a>
     <a href="{% url 'cargar_proveedores' %}">Crear proveedor</a>
     <br><br>
-    <ul>
+    <table class="table">
+        <tbody>
+            <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+            </tr>
         {% for proveedor in proveedores %}
-        <li>
+        <tr>
             <td>{{proveedor.nombre}}</td>
             <td>{{proveedor.contacto}}</td>
-        </li>
+        </tr>
         {% endfor %}
-    </ul>
+        </tbody>    
+    </table>
 {% endblock contenido %}
