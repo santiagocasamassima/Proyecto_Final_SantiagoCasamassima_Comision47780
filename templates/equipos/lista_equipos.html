@@ -22,8 +22,15 @@
             </tr>
         {% for equipo in equipos %}
         <tr>
+            <td>{{equipo.id}}</td>
             <td>{{equipo.nombre}}</td>
             <td>{{equipo.ubicacion}}</td>
+            <td>
+              <form action="{% url 'eliminar_equipo' equipo.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-link" value="eliminar"/>
+              </form>
+            </td>
         </tr>
         {% endfor %}
         </tbody>    

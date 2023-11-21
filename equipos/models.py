@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class equipos (models.Model):
+    id = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length=128)
     descripcion = models.CharField(max_length=256)
     ubicacion = models.CharField(max_length=256)

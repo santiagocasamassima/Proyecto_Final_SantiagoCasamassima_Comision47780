@@ -1,6 +1,7 @@
 from django import forms
 
 class EquipoForm(forms.Form):
+    id = forms.CharField(required=True, max_length=400)
     nombre = forms.CharField(required=True, max_length=64)
     descripcion = forms.CharField(required=True, max_length=50000) 
     ubicacion = forms.CharField(required=True, max_length=256)

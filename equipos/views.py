@@ -37,6 +37,7 @@ def cargar_equipo(request):
 
         if form.is_valid():
             data = form.cleaned_data
+            id = data["id"]
             nombre = data["nombre"]
             descripcion = data["descripcion"]
             ubicacion = data["ubicacion"]
@@ -53,7 +54,16 @@ def cargar_equipo(request):
     template_name="equipos/carga_equipos.html",
     context={"form":form}
     )
-    return http_response      
+    return http_response    
+
+def eliminar_equipo(request, id):
+     equipo = equipos.objects.get(id=id)
+     
+     if request.method == "POST":
+        equipo.delete()
+        
+        url_exitosa = reverse("lista_equipos")
+        return redirect(url_exitosa)
 
 def lista_proveedores(request):
     
