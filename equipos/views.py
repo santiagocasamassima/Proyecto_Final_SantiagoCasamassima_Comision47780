@@ -56,6 +56,37 @@ def cargar_equipo(request):
     )
     return http_response    
 
+def editar_equipo(request, id):
+    equipo = equipos.objects.get(id=id)
+    if request.method == "POST":
+        form = EquipoForm(request.POST)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            equipo.id = data["id"]
+            equipo.nombre = data["nombre"]
+            equipo.descripcion = data["descripcion"]
+            equipo.ubicacion = data["ubicacion"]
+            
+            equipo.save()
+
+            successful_url = reverse("lista_equipos")
+            return redirect(successful_url)
+    else:
+        #descargar formulario con data actual
+        inicial = {
+            "id": equipo.id,
+            "nombre": equipo.nombre,
+            "descripcion": equipo.descripcion,
+            "ubicacion": equipo.ubicacion,
+        }
+        form = EquipoForm(initial=inicial)
+    return render(
+        request= request,
+        template_name="equipos/carga_equipos.html",
+        context={"form":form}
+    )    
+    
 def eliminar_equipo(request, id):
      equipo = equipos.objects.get(id=id)
      

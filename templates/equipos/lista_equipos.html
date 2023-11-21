@@ -26,6 +26,9 @@
             <td>{{equipo.nombre}}</td>
             <td>{{equipo.ubicacion}}</td>
             <td>
+                <a href="{% url 'editar_equipo' equipo.id %}">Editar</a>
+            </td>
+            <td>
               <form action="{% url 'eliminar_equipo' equipo.id %}" method="post">
                 {% csrf_token %}
                 <input type="submit" class="btn btn-link" value="eliminar"/>
