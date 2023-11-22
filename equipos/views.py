@@ -151,9 +151,10 @@ def cargar_referente(request):
         if form.is_valid():
             data = form.cleaned_data
             nombre = data["nombre"]
+            apellido = data["apellido"]
             interno = data["interno"]
         
-        ref = referentes(nombre=nombre, interno=interno)
+        ref = referentes(nombre=nombre, apellido=apellido, interno=interno)
         ref.save()
 
         successful_url = reverse("lista_referentes")
@@ -167,6 +168,25 @@ def cargar_referente(request):
     context={"form":form}
     )
     return http_response
+
+def busqueda_referente(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+    # Filtrado
+        ref = referentes.objects.filter(
+            Q(nombre__icontains=busqueda) | Q(apellido__contains=busqueda)
+        )
+        
+        contexto = {
+            "referentes": ref,
+        }
+        http_response = render(
+            request=request,
+            template_name="equipos/lista_referentes.html",
+            context=contexto,
+        )
+        return http_response
 
 def busqueda_equipo(request):
     if request.method == "POST":

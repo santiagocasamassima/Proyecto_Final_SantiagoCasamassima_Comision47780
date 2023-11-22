@@ -13,4 +13,5 @@ class ProveedoresForm(forms.Form):
 
 class ReferentesForm(forms.Form):
     nombre = forms.CharField(required=True, max_length=64)
+    apellido = forms.CharField(required=True, max_length=128)
     interno = forms.CharField(required=True, max_length=30)

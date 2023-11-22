@@ -1,6 +1,6 @@
 from django.urls import path
 
-from equipos.views import lista_equipos, cargar_equipo, busqueda_equipo, lista_proveedores, cargar_proveedores, lista_referentes, cargar_referente, eliminar_equipo, editar_equipo
+from equipos.views import lista_equipos, cargar_equipo, busqueda_equipo, lista_proveedores, cargar_proveedores, lista_referentes, cargar_referente, eliminar_equipo, editar_equipo, busqueda_referente
 
 
 
@@ -16,4 +16,5 @@ urlpatterns = [
     path("carga-referentes/", cargar_referente, name="cargar_referentes"),
     path("elimina-equipos/<int:id>/" , eliminar_equipo, name="eliminar_equipo"),
     path("edita-equipos/<int:id>/" , editar_equipo, name="editar_equipo"),
+    path("buscar-referentes/", busqueda_referente, name="busqueda_referente"),
      ]

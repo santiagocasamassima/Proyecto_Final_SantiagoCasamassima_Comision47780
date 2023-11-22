@@ -17,5 +17,6 @@ class proveedores (models.Model):
     datos_adicionales = models.CharField(max_length=256)
 
 class referentes (models.Model):
-    nombre = models.CharField(max_length=128)
+    nombre = models.CharField(max_length=64)
+    apellido = models.CharField(max_length=128)
     interno = models.CharField(max_length=30)
