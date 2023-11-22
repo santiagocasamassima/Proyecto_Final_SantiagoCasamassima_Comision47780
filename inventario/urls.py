@@ -28,4 +28,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("equipos/", include("equipos.urls")),
     path("index/", index, name="index"),
+    path("perfiles/", include("perfiles.urls") ),
 ]
