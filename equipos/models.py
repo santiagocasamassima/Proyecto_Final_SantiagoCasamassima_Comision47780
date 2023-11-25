@@ -16,7 +16,9 @@ class proveedores (models.Model):
     contacto = models.CharField(max_length=256)
     datos_adicionales = models.CharField(max_length=256)
 
-class referentes (models.Model):
-    nombre = models.CharField(max_length=64)
-    apellido = models.CharField(max_length=128)
-    interno = models.CharField(max_length=30)
+class articulos(models.Model):
+    id = models.IntegerField(primary_key=True)
+    titulo = models.CharField(max_length=100)
+    fecha = models.DateField(null=True, max_length=20)
+    mensaje = models.TextField(null=True, blank=True)
+    

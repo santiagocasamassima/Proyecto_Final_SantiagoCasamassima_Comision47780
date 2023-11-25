@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title>Buscar Proveedor</title>
+{% endblock titulo %}
+
+{% block contenido %}
+<a href="{% url 'equipos/lista_proveedores' %}">Ver todos</a>
+
+<form action="{% url 'equipos/busqueda_proveedor' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="buscar">
+    <input type="submit" value="Buscar">
+</form>
+<ul>
+    {% for proveedor in proveedores %}
+    <li>
+        {{proveedor.nombre}}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock contenido %}

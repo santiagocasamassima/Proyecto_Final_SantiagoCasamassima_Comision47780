@@ -11,7 +11,9 @@ class ProveedoresForm(forms.Form):
     contacto = forms.CharField(max_length=256)
     datos_adicionales = forms.CharField(max_length=256)
 
-class ReferentesForm(forms.Form):
-    nombre = forms.CharField(required=True, max_length=64)
-    apellido = forms.CharField(required=True, max_length=128)
-    interno = forms.CharField(required=True, max_length=30)
+class ArticulosForm(forms.Form):
+    id = forms.CharField(required=True, max_length=400)
+    titulo = forms.CharField(max_length=100)
+    fecha = forms.DateField(label="Fecha de creación")
+    mensaje = forms.CharField(max_length=50000, widget=forms.Textarea())
+    

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    <title> Listado de Artículos</title>
+{% endblock titulo %}
+
+{% block contenido %}
+    <h1 style="color:orange;">Artículos</h1>
+    <a href="{% url 'lista_articulos' %}">Ver todos</a>
+    <a href="{% url 'cargar_articulo' %}">Crear nuevo artículo</a>
+    <br><br>
+    <form action="{% url 'busqueda_articulo' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="busqueda">
+        <input type="submit" value="Buscar por artículo">
+    </form>
+    <table class="table">
+        <tbody>
+            <tr>
+            <th>Título</th>
+            </tr>
+        {% for articulo in articulos %}
+        <tr>
+            <td>{{articulo.titulo}}</td>
+            <td>
+                <a href="{% url 'editar_articulo' articulo.id %}">Editar</a>
+            </td>
+            <td>
+              <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">
+                {% csrf_token %}
+                <input type="submit" class="btn btn-link" value="eliminar"/>
+              </form>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>    
+    </table>
+{% endblock contenido %}
