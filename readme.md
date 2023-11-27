@@ -1,3 +1,6 @@
+
+Link para ver video explicativo: https://drive.google.com/file/d/1_yU_pQwRJnaoaC7ILr1-1G1mN9J0Tex2/view?usp=sharing
+
 #Breve descripción del sistema Bienvenido/as. Este sistema pretende servir de inventario para el registro y consulta de equipos médicos instalados en un Hospital. 
 Aquí se pueden registrar equipos, referentes de cada sector donde se hayan instalados los mismos y proveedores con su información de contacto para recibir soporte.
 También, se pueden cargar Artículos para informar a la organización el estado de cada instalación de los equipos.
