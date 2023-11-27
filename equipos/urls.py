@@ -1,8 +1,8 @@
 from django.urls import path
 
-from equipos.views import lista_equipos, cargar_equipo, busqueda_equipo, lista_proveedores, cargar_proveedores, busqueda_proveedor, editar_proveedor, eliminar_proveedor, eliminar_equipo, editar_equipo, editar_articulo, busqueda_articulo, eliminar_articulo, lista_articulos, cargar_articulo
+from equipos.views import lista_equipos, cargar_equipo, busqueda_equipo, lista_proveedores, cargar_proveedores, busqueda_proveedor, editar_proveedor, eliminar_proveedor, eliminar_equipo, editar_equipo, editar_articulo, busqueda_articulo, eliminar_articulo, lista_articulos, cargar_articulo, ArticuloDetailView
 
-
+from . import views
 
 
 
@@ -22,4 +22,7 @@ urlpatterns = [
     path("buscar-articulos/", busqueda_articulo, name="busqueda_articulo"),
     path("elimina-articulos/<int:id>/" , eliminar_articulo, name="eliminar_articulo"),
     path("edita-articulo/<int:id>/", editar_articulo, name="editar_articulo"),
+    path("ver-articulo/<int:pk>/", ArticuloDetailView.as_view(), name="ver_articulo"),
+
+    path('acercaDeMi/', views.about, name='acerca_de_mi'),
      ]

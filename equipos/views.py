@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from .forms import *
 from .models import equipos, proveedores, articulos
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -222,17 +222,16 @@ def cargar_articulo(request):
         form = ArticulosForm(request.POST)
 
         if form.is_valid():
-            data = form.cleaned_data
+            data = form.cleaned_data 
             id = data["id"]
             titulo = data["titulo"]
             fecha = data["fecha"]
             mensaje = data["mensaje"]
+            ar = articulos(titulo=titulo, fecha=fecha, mensaje=mensaje, creador=request.user)
+            ar.save()
 
-        art = articulos(titulo=titulo, fecha=fecha, mensaje=mensaje)
-        art.save()
-
-        successful_url = reverse("lista_articulos")
-        return redirect(successful_url)
+            successful_url = reverse("lista_articulos")
+            return redirect(successful_url)
 
     else:
         form = ArticulosForm()
@@ -314,3 +313,10 @@ def busqueda_articulo(request):
             context=contexto,
         )
         return http_response 
+    
+class ArticuloDetailView(LoginRequiredMixin, DetailView):
+    model = articulos
+    success_url = reverse_lazy('lista_articulos')
+
+def about(request):
+    return render(request, 'equipos/acercaDeMi.html', {})

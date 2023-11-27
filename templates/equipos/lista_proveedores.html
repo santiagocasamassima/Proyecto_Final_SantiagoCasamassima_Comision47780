@@ -23,8 +23,7 @@
         {% for proveedor in proveedores %}
         <tr>
             <td>{{proveedor.nombre}}</td>
-            <td>{{proveedor.contacto}}</td>
-        </tr>
+            <td>{{proveedor.contacto}}</td>        
         <td>
             <a href="{% url 'editar_proveedor' proveedor.id %}">Editar</a>
         </td>
@@ -34,6 +33,7 @@
             <input type="submit" class="btn btn-link" value="eliminar"/>
           </form>
         </td>
+        </tr>
         {% endfor %}
         </tbody>    
     </table>

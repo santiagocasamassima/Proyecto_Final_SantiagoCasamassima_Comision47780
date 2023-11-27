@@ -17,19 +17,31 @@
     <table class="table">
         <tbody>
             <tr>
-            <th>Título</th>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Mensaje</th>
             </tr>
         {% for articulo in articulos %}
         <tr>
+            <td>{{articulo.id }}</td>
             <td>{{articulo.titulo}}</td>
+            <td>{{articulo.mensaje|truncatewords:10}}</td>
             <td>
-                <a href="{% url 'editar_articulo' articulo.id %}">Editar</a>
+            <a href="{% url 'ver_articulo' articulo.id %}">Ver más</a>
             </td>
             <td>
-              <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">
+                {% if user == articulo.creador %}
+                <a href="{% url 'editar_articulo' articulo.id %}">Editar</a>
+                {% endif %}
+            </td>
+            <td>
+                {% if user == articulo.creador %}
+              <form action="{% url 'eliminar_articulo' articulo.id %}" method="post">              
                 {% csrf_token %}
                 <input type="submit" class="btn btn-link" value="eliminar"/>
+                {% endif %}
               </form>
+              
             </td>
         </tr>
         {% endfor %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+
+<p>
+  <strong>Articulo</strong> {{object.mensaje}}
+</p>
+
+<br>
+<a href="{% url 'lista_articulos' %}">Volver a la lista</a>
+{% endblock contenido %}
